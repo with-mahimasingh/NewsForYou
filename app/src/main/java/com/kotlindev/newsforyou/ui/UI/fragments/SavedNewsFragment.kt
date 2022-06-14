@@ -1,5 +1,7 @@
 package com.kotlindev.newsforyou.ui.UI.fragments
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -14,6 +16,7 @@ import com.kotlindev.newsforyou.ui.adapters.NewsAdapter
 import kotlinx.android.synthetic.main.fragment_breaking_news.*
 import kotlinx.android.synthetic.main.fragment_saved_news.*
 import androidx.lifecycle.Observer
+import com.kotlindev.newsforyou.ui.models.Article
 
 class SavedNewsFragment:Fragment(R.layout.fragment_saved_news) {
     lateinit var viewModel: NewsViewModel
@@ -65,6 +68,9 @@ class SavedNewsFragment:Fragment(R.layout.fragment_saved_news) {
         viewModel.getSavedNews().observe(viewLifecycleOwner, Observer { articles ->
             newsAdapter.differ.submitList(articles)
         })
+        newsAdapter.onShareNewsClick {
+            shareNews(context, it)
+        }
     }
 
     private fun setupRecyclerView() {
@@ -73,5 +79,13 @@ class SavedNewsFragment:Fragment(R.layout.fragment_saved_news) {
             adapter = newsAdapter
             layoutManager = LinearLayoutManager(activity)
         }
+    }
+    fun shareNews(context: Context?, article: Article){
+        val intent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, article.url)
+            type ="text/plain"
+        }
+        context?.startActivity(Intent.createChooser(intent, "Share News On"))
     }
 }

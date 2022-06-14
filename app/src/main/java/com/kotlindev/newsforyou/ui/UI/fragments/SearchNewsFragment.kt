@@ -1,5 +1,7 @@
 package com.kotlindev.newsforyou.ui.UI.fragments
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -13,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kotlindev.newsforyou.R
 import com.kotlindev.newsforyou.ui.adapters.NewsAdapter
+import com.kotlindev.newsforyou.ui.models.Article
 import com.kotlindev.newsforyou.ui.util.Constants.Companion.QUERY_PAGE_SIZE
 import com.kotlindev.newsforyou.ui.util.Constants.Companion.SEARCH_NEWS_TIME_DELAY
 import com.kotlindev.newsforyou.ui.util.Resource
@@ -82,13 +85,23 @@ class SearchNewsFragment:Fragment(R.layout.fragment_search_news) {
                     }
                 }
             })
+            newsAdapter.onShareNewsClick {
+                shareNews(context, it)
+            }
         }
 
         private fun hideProgressBar() {
             paginationProgressBar.visibility = View.INVISIBLE
             isLoading = false
         }
-
+        fun shareNews(context: Context?, article: Article){
+            val intent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT, article.url)
+                type ="text/plain"
+            }
+            context?.startActivity(Intent.createChooser(intent, "Share News On"))
+        }
         private fun showProgressBar() {
             paginationProgressBar.visibility = View.VISIBLE
             isLoading = true

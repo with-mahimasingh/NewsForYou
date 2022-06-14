@@ -55,15 +55,25 @@ class NewsAdapter :RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>(){
                 onItemClickListener?.let{it(article)}
             }
         }
+        holder.itemView.ivShare.setOnClickListener {
+            onShareNewsClick?.let {
+                article?.let { it1 -> it(it1) }
+            }
+        }
     }
 
     override fun getItemCount(): Int {
         return differ.currentList.size
     }
 
+
+    private var onShareNewsClick: ((Article) -> Unit)? = null
     private  var onItemClickListener:((Article)->Unit)? =null
 
     fun setOnClickListener(listener:(Article)->Unit){
         onItemClickListener =listener
+    }
+    fun onShareNewsClick(listener: (Article) -> Unit) {
+        onShareNewsClick = listener
     }
 }

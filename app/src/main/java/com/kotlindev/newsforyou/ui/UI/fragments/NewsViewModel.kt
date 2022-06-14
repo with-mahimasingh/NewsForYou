@@ -37,7 +37,7 @@ class NewsViewModel(
         getBreakingNews("in")
     }
 
-    //viewModelScope ensures thar our coroutine is lalive as long as our view model is alive
+    //viewModelScope ensures that our coroutine is alive as long as our view model is alive
 
     fun getBreakingNews(countryCode: String) = viewModelScope.launch {
         safeBreakingNewsCall(countryCode)

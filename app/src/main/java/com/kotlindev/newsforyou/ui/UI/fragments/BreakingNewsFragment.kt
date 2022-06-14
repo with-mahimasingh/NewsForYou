@@ -1,5 +1,7 @@
 package com.kotlindev.newsforyou.ui.UI.fragments
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity.apply
@@ -14,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kotlindev.newsforyou.R
 import com.kotlindev.newsforyou.ui.adapters.NewsAdapter
+import com.kotlindev.newsforyou.ui.models.Article
 import com.kotlindev.newsforyou.ui.util.Constants.Companion.QUERY_PAGE_SIZE
 import com.kotlindev.newsforyou.ui.util.Resource
 import kotlinx.android.synthetic.main.fragment_breaking_news.*
@@ -62,7 +65,11 @@ class BreakingNewsFragment :Fragment(R.layout.fragment_breaking_news) {
                 }
             }
         })
+        newsAdapter.onShareNewsClick {
+            shareNews(context, it)
+        }
     }
+
     private fun swipeRefresh()
     {
         swipelayout.setOnRefreshListener {
@@ -74,6 +81,14 @@ class BreakingNewsFragment :Fragment(R.layout.fragment_breaking_news) {
     private fun hideProgressBar() {
         paginationProgressBar.visibility = View.INVISIBLE
         isLoading = false
+    }
+    fun shareNews(context: Context?, article: Article){
+        val intent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, article.url)
+            type ="text/plain"
+        }
+        context?.startActivity(Intent.createChooser(intent, "Share News On"))
     }
 
     private fun showProgressBar() {

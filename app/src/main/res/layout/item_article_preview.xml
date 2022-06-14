@@ -8,7 +8,7 @@
 
 <androidx.cardview.widget.CardView
     android:layout_width="match_parent"
-    android:layout_height="120dp"
+    android:layout_height="150dp"
     android:padding="10dp"
     android:layout_marginTop="10dp"
     android:layout_marginBottom="5dp"
@@ -46,7 +46,7 @@
         <ImageView
             android:id="@+id/ivArticleImage"
             android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:layout_height="match_parent"
             android:layout_marginStart="0dp"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -94,6 +94,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvTitle"
              />
+
+        <ImageButton
+            android:id="@+id/ivShare"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            tools:layout_editor_absoluteX="337dp"
+            tools:layout_editor_absoluteY="69dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_baseline_share_24"
+            app:layout_constraintEnd_toEndOf="@id/tvPublishedAt"
+            app:layout_constraintTop_toBottomOf="@id/tvPublishedAt"
+             />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
