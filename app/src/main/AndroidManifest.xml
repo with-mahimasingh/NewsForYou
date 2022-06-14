@@ -3,7 +3,7 @@
     package="com.kotlindev.newsforyou">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".ui.NewsApplication"
@@ -13,7 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.kotlindev.newsforyou.ui.UI.fragments.NewsActivity"
+        <activity
+            android:name=".DarkModeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.UI.fragments.NewsActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

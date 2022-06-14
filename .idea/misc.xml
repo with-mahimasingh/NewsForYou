@@ -3,8 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/ic_baseline_brightness_6_24.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_dark_mode.xml" value="0.19270833333333334" />
         <entry key="app/src/main/res/layout/activity_news.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_breaking_news.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_dark_mode.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_saved_news.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_search_news.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.15" />
+        <entry key="app/src/main/res/layout/item_article_preview.xml" value="0.25" />
         <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.1" />
       </map>
     </option>
